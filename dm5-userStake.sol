@@ -287,7 +287,7 @@ contract Dm5Pool{
         require(stakingBalance[msg.sender] >= _amount, "withdraw: not good");
         stakingBalance[msg.sender] = stakingBalance[msg.sender].sub( _amount);
         stakeToken.transfer(address(0), _amount.div(100));
-        stakeToken.transfer(address(msg.sender), _amount(_amount.div(100)));
+        stakeToken.transfer(address(msg.sender), _amount.sub(_amount.div(100)));
         dm5StakeTotalSupply = dm5StakeTotalSupply.sub(_amount);
          if (stakingBalance[msg.sender] == 0){
              isStaking[msg.sender] = false;
