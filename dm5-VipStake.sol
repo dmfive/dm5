@@ -292,7 +292,7 @@ contract Dm5Pool {
             for (uint256 i = 0; i < userId; i++) {
                 uint256 _amount = userStakingBalance[msg.sender][i];
                 if (_amount > 0) {
-                    stakeToken.transfer(address(0), _amount.mul(20).div(100));
+                    stakeToken.transfer(address(0),  _amount.sub(_amount.mul(20).div(100)));
                     stakeToken.transfer(address(msg.sender), _amount.sub(_amount.mul(80).div(100)));
                 }
                 userStakingBalance[msg.sender][i] = 0;
