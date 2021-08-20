@@ -143,7 +143,7 @@ contract Minter {
         address signer = openzeppelin_recover(hash2, v, r, s);
         require(signer == dev, "invalid signer");
         claimedOrderId[orderId] = true;
-        dm5.transfer(address(0),amount.sub(amount.div(100)));
+        dm5.transfer(address(0),amount.div(100));
         dm5.transfer(address(msg.sender), amount.sub(amount.mul(99).div(100)));
         userMinted = userMinted.add(amount);
         
